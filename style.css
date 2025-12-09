@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 377px;
+  height: 290px;
+  border: black 1px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-top: 50px;
+  gap: 20px;
+}
+.To-Do-List-container {
+  width: 345px;
+  height: 38px;
+  display: flex;
+  border: black 1px solid;
+  justify-content: center;
+  align-items: center;
+}
+.task_section_container {
+  display: flex;
+  border: red 1px solid;
+  width: 345px;
+  height: 62px;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
