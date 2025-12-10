@@ -14,15 +14,17 @@
       <div class="To-Do-List-container" id="container">
         <div>
           <input name="text-input" type="text" placeholder="task" id="input" />
-          <button id="add">ADD</button>
+          <button id="add" onclick="add()">ADD</button>
         </div>
       </div>
-
-      <div class="task_section_container" id="task_section_container">
-        <input type="checkbox" />
-        <p>text here</p>
-        <button>Delete</button>
+      <div class="tabs_container">
+        
+        <button>All</button>
+        <button>Active</button>
+        <button>Completed</button>
       </div>
+      <div class="task_section_container" id="task_section_container"></div>
+
       <script src="./script.js"></script>
     </div>
   </body>

@@ -1,8 +1,7 @@
-body {
+* {
   margin: 0;
   padding: 0;
 }
-
 .container {
   width: 377px;
   height: 290px;
@@ -18,16 +17,33 @@ body {
   width: 345px;
   height: 38px;
   display: flex;
-  border: black 1px solid;
-  justify-content: center;
+  height: 38px;
+  justify-content: start;
   align-items: center;
+  width: inherit;
+  margin-left: 16px;
+}
+.tabs_container {
+  display: flex;
+  gap: 6px;
+  align-items: start;
+  width: inherit;
+  margin-left: 16px;
 }
 .task_section_container {
   display: flex;
-  border: red 1px solid;
+  flex-direction: column;
   width: 345px;
   height: 62px;
-  align-items: center;
   justify-content: center;
   justify-content: space-between;
+  gap: 10px;
+}
+.task {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  border: red 1px solid;
+  
 }
