@@ -4,7 +4,9 @@ const add$ = document.querySelector("#add");
 
 const taskSectionContainer = document.querySelector("#task_section_container");
 
-const taskArr = [];
+const countArrLength = document.querySelector("#counting");
+
+let taskArr = [];
 
 let taskObjID = 1;
 
@@ -22,7 +24,6 @@ const add = () => {
 
   taskView();
   clearInput();
-  console.log(taskArr);
 };
 
 input.addEventListener("keydown", (e) => {
@@ -31,16 +32,17 @@ input.addEventListener("keydown", (e) => {
   }
 });
 
-const taskView = () => {
+const taskView = (a) => {
   let taskDisplay = "";
+
   taskArr.forEach((task) => {
     const task$ = ` 
         <div class="task">
           <input type="checkbox" ${
             task.isCompleted && "checked"
-          } onchange="isChecked(${task.objID}, this )"/>
+          } onclick="onToggleComplete(${task.objID})"/>
           <p>${task.text}</p>
-          <button>Delete</button>
+          <button onclick="onDelete(${task.objID})">Delete</button>
         </div>`;
 
     taskDisplay += task$;
@@ -49,21 +51,75 @@ const taskView = () => {
   taskSectionContainer.innerHTML = taskDisplay;
 };
 
-const isChecked = (id, checkbox) => {
-  // console.log(id);
-  console.log(checkbox);
+const onToggleComplete = (id) => {
+  const newTasksArr = taskArr.map((task) => {
+    if (task.objID === id) {
+      const newTask = {
+        objID: task.objID,
+        text: task.text,
+        isCompleted: task.isCompleted ? false : true,
+      };
+      return newTask;
+    } else {
+      return task;
+    }
+  });
 
-  if ((checkbox.checked = true)) {
-    return console.log("Yes it is True that checkbox Checked");
-  } else {
-    console.log(task.isCompleted);
-  }
+  taskArr = newTasksArr;
+  console.log(newTasksArr);
+
+  taskView();
+};
+
+const onDelete = (id) => {
+  const taskDelete = taskArr.filter((task) => {
+    if (task.objID !== id) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  taskArr = taskDelete;
+  // console.log(taskDelete);
+  taskView();
+};
+
+const btnActive = (el) => {
+  const newArrActive = taskArr.filter((task) => {
+    if (task.isCompleted === false) {
+      return true;
+    }
+  });
+
+  taskView(newArrActive);
+  console.log(newArrActive, "Active");
+};
+
+const btnCompleted = (compEl) => {
+  const ComplatedArr = taskArr.filter((task) => {
+    if (task.isCompleted !== false) {
+      return task;
+    }
+    taskView();
+  });
+  console.log(ComplatedArr, "Complated");
+};
+
+const btnAll = (allEl) => {
+  const allArr = taskArr.map((task) => {
+    return task;
+  });
+  taskView();
+  countArr();
+  console.log(allArr, "All");
+};
+const countArr = () => {
+  const taskLength = taskArr.filter((task) => {
+    console.log(task.length);
+  });
 };
 
 const clearInput = () => {
   input.value = "";
 };
-
-// Odoo checkbox checkleh uyd completedruu shiljih bolon checkbox checklegdeegui bol active tab-d haragddag baidlaar hiine
-
-// Teghiin tuld #1 checkbox checkleh uyd true utgiig ugdug boliy.
